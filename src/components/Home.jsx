@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  entainColor: {
+    color: "#bf00ff",
+  },
 }));
 
 export default function Home() {
@@ -17,7 +20,7 @@ export default function Home() {
         component="h1"
         variant="h2"
         align="center"
-        color="textPrimary"
+        className={classes.entainColor}
         gutterBottom
       >
         Entain Tech Assessment
@@ -31,9 +34,8 @@ export default function Home() {
           <Grid item>
             <Button
               href="/dashboard"
-              variant="contained"
               size="large"
-              color="primary"
+              className={classes.entainColor}
             >
               Continue
             </Button>

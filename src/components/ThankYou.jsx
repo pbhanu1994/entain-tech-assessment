@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  entainColor: {
+    color: "#bf00ff",
+  },
 }));
 
 export default function ThankYou() {
@@ -17,15 +20,24 @@ export default function ThankYou() {
         component="h1"
         variant="h2"
         align="center"
-        color="textPrimary"
+        className={classes.entainColor}
         gutterBottom
       >
         Thank You!
       </Typography>
+      <Typography
+        component="h6"
+        variant="h6"
+        align="center"
+        color="textPrimary"
+        gutterBottom
+      >
+        Thank You for viewing the upcoming race timings!
+      </Typography>
       <div className={classes.heroButtons}>
         <Grid container spacing={2} justify="center">
           <Grid item>
-            <Button href="/" variant="contained" size="large" color="secondary">
+            <Button href="/" size="large" className={classes.entainColor}>
               Go Home
             </Button>
           </Grid>

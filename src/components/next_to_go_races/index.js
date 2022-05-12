@@ -1,22 +1,15 @@
 import { useState, useEffect } from "react";
-import { Typography, Paper, Tabs, Tab } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import moment from "moment";
 import { getData } from "../../services/getData";
-import RacesTable from "./RacesTable";
+import { Navbar } from "../common/Navbar";
+import { Table } from "../common/Table";
+import { RacesTabs } from "./RacesTabs";
 
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
-});
 const NextToGoRaces = () => {
   const [racesData, setRacesData] = useState({});
   const [value, setValue] = useState(0);
   const [category, setCategory] = useState("");
   const [date, setDate] = useState(new Date());
-
-  const classes = useStyles();
 
   useEffect(() => {
     const getRacesData = async () => {
@@ -103,25 +96,13 @@ const NextToGoRaces = () => {
 
   return (
     <>
-      <Typography variant="h3" component="h2">
-        Next to Go Races
-      </Typography>
-      <Paper className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="All" />
-          {racesData.race_summaries &&
-            Object.values(racesData.race_summaries)
-              .slice(0, 5)
-              .map((data, index) => <Tab key={index} label={data.race_name} />)}
-        </Tabs>
-      </Paper>
-      <RacesTable columns={columns} rows={rows} />
+      <Navbar title="Next To Go Races" buttonLabel="Thank you" />
+      <RacesTabs
+        value={value}
+        handleChange={handleChange}
+        racesData={racesData}
+      />
+      <Table columns={columns} rows={rows} />
     </>
   );
 };
